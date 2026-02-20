@@ -2,6 +2,7 @@ public class PalindromeCheckerApp {
     public static void main(String[] args) {
         showWelcomeMessage();
         checkHardcodedPalindrome();
+        checkPalindromeUsingCharArray();
     }
 
     public static void showWelcomeMessage() {
@@ -9,20 +10,52 @@ public class PalindromeCheckerApp {
         System.out.println("   Welcome to Palindrome App");
         System.out.println("=================================");
     }
+
     // UC2: Hardcoded Palindrome
     public static void checkHardcodedPalindrome() {
 
         String word = "madam";   // hardcoded string
         String reversed = "";
 
-        for(int i = word.length() - 1; i >= 0; i--) {
+        for (int i = word.length() - 1; i >= 0; i--) {
             reversed = reversed + word.charAt(i);
         }
 
-        if(word.equals(reversed)) {
+        if (word.equals(reversed)) {
             System.out.println(word + " is a Palindrome");
         } else {
             System.out.println(word + " is NOT a Palindrome");
+        }
+    }
+
+    // UC4 – Character Array Based Palindrome Check
+    public static void checkPalindromeUsingCharArray() {
+
+        String word = "radar";
+
+        // Convert string to char array
+        char[] characters = word.toCharArray();
+
+        int start = 0;
+        int end = characters.length - 1;
+        boolean isPalindrome = true;
+
+        // Two-pointer comparison
+        while (start < end) {
+
+            if (characters[start] != characters[end]) {
+                isPalindrome = false;
+                break;
+            }
+
+            start++;
+            end--;
+        }
+
+        if (isPalindrome) {
+            System.out.println(word + " is a Palindrome (UC4)");
+        } else {
+            System.out.println(word + " is NOT a Palindrome (UC4)");
         }
     }
 }
