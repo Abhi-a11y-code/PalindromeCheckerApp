@@ -1,6 +1,7 @@
 import java.util.Stack;
 import java.util.Queue;
 import java.util.LinkedList;
+import java.util.Deque;
 public class PalindromeCheckerApp {
     public static void main(String[] args) {
         showWelcomeMessage();
@@ -9,6 +10,7 @@ public class PalindromeCheckerApp {
         checkPalindromeUsingCharArray();
         checkPalindromeUsingStack();
         checkPalindromeUsingQueueAndStack();
+        checkPalindromeUsingDeque();
     }
 
     public static void showWelcomeMessage() {
@@ -135,6 +137,38 @@ public class PalindromeCheckerApp {
             System.out.println(word + " is a Palindrome (UC6)");
         } else {
             System.out.println(word + " is NOT a Palindrome (UC6)");
+        }
+    }
+    // UC7 – Deque Based Optimized Palindrome Checker
+    public static void checkPalindromeUsingDeque() {
+
+        String word = "rotor";
+
+        Deque<Character> deque = new LinkedList<>();
+
+        // Insert characters into deque
+        for (int i = 0; i < word.length(); i++) {
+            deque.addLast(word.charAt(i));
+        }
+
+        boolean isPalindrome = true;
+
+        // Compare front and rear until empty
+        while (deque.size() > 1) {
+
+            char front = deque.removeFirst();
+            char rear = deque.removeLast();
+
+            if (front != rear) {
+                isPalindrome = false;
+                break;
+            }
+        }
+
+        if (isPalindrome) {
+            System.out.println(word + " is a Palindrome (UC7)");
+        } else {
+            System.out.println(word + " is NOT a Palindrome (UC7)");
         }
     }
 }
