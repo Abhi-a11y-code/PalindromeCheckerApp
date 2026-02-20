@@ -1,4 +1,6 @@
 import java.util.Stack;
+import java.util.Queue;
+import java.util.LinkedList;
 public class PalindromeCheckerApp {
     public static void main(String[] args) {
         showWelcomeMessage();
@@ -6,6 +8,7 @@ public class PalindromeCheckerApp {
         checkPalindromeUsingReverse();
         checkPalindromeUsingCharArray();
         checkPalindromeUsingStack();
+        checkPalindromeUsingQueueAndStack();
     }
 
     public static void showWelcomeMessage() {
@@ -101,6 +104,37 @@ public class PalindromeCheckerApp {
             System.out.println(word + " is a Palindrome (UC5)");
         } else {
             System.out.println(word + " is NOT a Palindrome (UC5)");
+        }
+    }
+    // UC6 – Queue + Stack Based Palindrome Check
+    public static void checkPalindromeUsingQueueAndStack() {
+
+        String word = "refer";
+
+        Stack<Character> stack = new Stack<>();
+        Queue<Character> queue = new LinkedList<>();
+
+        // Push to stack and enqueue to queue
+        for (int i = 0; i < word.length(); i++) {
+            stack.push(word.charAt(i));
+            queue.add(word.charAt(i));
+        }
+
+        boolean isPalindrome = true;
+
+        // Compare dequeue vs pop
+        while (!stack.isEmpty()) {
+
+            if (!stack.pop().equals(queue.remove())) {
+                isPalindrome = false;
+                break;
+            }
+        }
+
+        if (isPalindrome) {
+            System.out.println(word + " is a Palindrome (UC6)");
+        } else {
+            System.out.println(word + " is NOT a Palindrome (UC6)");
         }
     }
 }
