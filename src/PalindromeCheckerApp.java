@@ -2,6 +2,7 @@ public class PalindromeCheckerApp {
     public static void main(String[] args) {
         showWelcomeMessage();
         checkHardcodedPalindrome();
+        checkPalindromeUsingReverse();
     }
 
     public static void showWelcomeMessage() {
@@ -23,6 +24,22 @@ public class PalindromeCheckerApp {
             System.out.println(word + " is a Palindrome");
         } else {
             System.out.println(word + " is NOT a Palindrome");
+        }
+    }
+    // UC3 – Palindrome using reverse logic
+    public static void checkPalindromeUsingReverse() {
+
+        String original = "level";
+        String reversed = "";
+
+        for(int i = original.length() - 1; i >= 0; i--) {
+            reversed = reversed + original.charAt(i);
+        }
+
+        if(original.equals(reversed)) {
+            System.out.println(original + " is a Palindrome (UC3)");
+        } else {
+            System.out.println(original + " is NOT a Palindrome (UC3)");
         }
     }
 }
